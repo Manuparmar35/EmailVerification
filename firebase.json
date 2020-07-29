@@ -1,0 +1,14 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  }, 
+  "hosting": {
+    "public": "dist/EmailVerification",
+    "site": "fbr-manu",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
