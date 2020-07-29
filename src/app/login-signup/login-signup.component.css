@@ -6,11 +6,11 @@
 }
 .rightside-card {
     display: flex;
-    width: 60%;
+    width: 500px;
     height: 400px;
     background-color: #2e334f;
     position: absolute;
-    left: 35%;
+    right: 15%;
     top: 115px;
 }
 .card-left {
@@ -86,4 +86,43 @@
     line-height: 30px;
     border-radius: 3px;
     cursor: pointer;
+}
+.left-text1 {
+    font-family: arial;
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 70px;
+}
+.left-text2 {
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: white;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+}
+.left-button {
+    width: 80%;
+    color: white;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+    left: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+}
+.facebook-color {
+    background-color: #3f5899;
+}
+.google-color {
+    background-color: #c4310e;
 }
