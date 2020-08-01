@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
+import { AuthService } from '../services/auth.service';
 var firebase = require('firebase');
 
 @Component({
@@ -8,60 +8,29 @@ var firebase = require('firebase');
   templateUrl: './login-signup.component.html',
   styleUrls: ['./login-signup.component.css']
 })
-export class LoginSignupComponent implements OnInit {
+export class LoginSignupComponent implements OnChanges {
 
   title = 'EmailVerification';
   provider = new firebase.auth.GoogleAuthProvider();
   constructor(
-    private firebase1: AngularFirestore,
-    private router: Router,
-    private route: ActivatedRoute
+    public auth: AuthService,
+    private router: Router
     ){}
   googleSignIn() {
-    firebase.auth().signInWithPopup(this.provider).then(function (result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      console.log(user.email);
-      this.router.navigate(['/user'], { relativeTo: this.route });
-      // ...
-    }).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
+    this.auth.googleSignIn()
+    .subscribe((user)=> {
+      console.log(user);
+      this.auth.user$ = user;
+      this.router.navigate(['user']);
+    })
   }
   facebookSignIn() {
-    this.router.navigate(['/user'], { relativeTo: this.route });
+    console.log('Inside facebook');
+    console.log(this.router);
+    this.router.navigate(['/user']);
   }
-  ngOnInit() {
-    this.firebase1.collection('EmailPass').doc('example@example.com').valueChanges().subscribe(data => {
-      console.log(data);
-    });
-    // firebase.auth().getRedirectResult().then(function(result) {
-    //   if (result.credential) {
-    //     // This gives you a Google Access Token. You can use it to access the Google API.
-    //     var token = result.credential.accessToken;
-    //     // ...
-    //   }
-    //   // The signed-in user info.
-    //   var user = result.user;
-    //   }).catch(function(error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-    //     // The email of the user's account used.
-    //     var email = error.email;
-    //     // The firebase.auth.AuthCredential type that was used.
-    //     var credential = error.credential;
-    //     // ...
-    //   });
+  ngOnChanges() {
+    
   }
 
 }
