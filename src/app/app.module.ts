@@ -18,7 +18,7 @@ import { LoginSignupComponent } from './login-signup/login-signup.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.fireConfig),
  	  AngularFirestoreModule,
   ],
   providers: [],

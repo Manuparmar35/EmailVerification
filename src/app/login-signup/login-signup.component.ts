@@ -9,14 +9,23 @@ var firebase = require('firebase');
   styleUrls: ['./login-signup.component.css']
 })
 export class LoginSignupComponent implements OnChanges {
-
+  public signUp = false;
   title = 'EmailVerification';
   provider = new firebase.auth.GoogleAuthProvider();
   constructor(
     public auth: AuthService,
     private router: Router
     ){}
-  googleSignIn() {
+  public googleSignIn(): void {
+    var x = firebase.auth().signInWithEmailAndPassword('example@example.com', 'example2').catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorMessage);
+      // ...
+    });
+    console.log("Here is the...");
+    console.log(x);
     this.auth.googleSignIn()
     .subscribe((user)=> {
       console.log(user);
@@ -24,11 +33,15 @@ export class LoginSignupComponent implements OnChanges {
       this.router.navigate(['user']);
     })
   }
-  facebookSignIn() {
-    console.log('Inside facebook');
-    console.log(this.router);
-    this.router.navigate(['/user']);
+  public facebookSignIn(): void {
+    this.auth.facebookSignIn()
+    .subscribe((user)=> {
+      console.log(user);
+      this.auth.user$ = user;
+      this.router.navigate(['user']);
+    })
   }
+
   ngOnChanges() {
     
   }

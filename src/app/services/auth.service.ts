@@ -20,8 +20,15 @@ export class AuthService {
     this.user$ = this.afAuth.authState;
   }
 
-  googleSignIn() {
+  public googleSignIn(): Observable<Object> {
     return from(this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
   }
 
+  public facebookSignIn(): Observable<Object> {
+    return from(this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()));
+  }
+
+  public logOut(): Promise<any> {
+    return firebase.auth().signOut();
+  }
 }

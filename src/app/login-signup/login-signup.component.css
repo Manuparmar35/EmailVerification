@@ -21,6 +21,7 @@
     width: 60%;
     height: inherit;
     background-color: white;
+    transition: width 2s, height 4s;
 }
 .text1 {
     text-align: center;
@@ -29,6 +30,9 @@
     font-weight: 700;
     font-family: arial;
     color: #1d1b1b;
+}
+.sign-up-bottom-gap {
+    margin-bottom: 15px;
 }
 .text2 {
     margin-top: 10px;
@@ -40,6 +44,11 @@
     color: #86909b;
     line-height: 25px;
 }
+.link {
+    color: blue;
+    cursor: pointer;
+}
+
 .input-container {
     width: 100%;
     text-align: center;
@@ -86,6 +95,20 @@
     line-height: 30px;
     border-radius: 3px;
     cursor: pointer;
+}
+.margin-top {
+    margin-top:15px;
+}
+.bottom-text {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: arial;
+    color: rgb(58, 58, 211);
+    cursor: pointer;
+    line-height: 25px;
 }
 .left-text1 {
     font-family: arial;
